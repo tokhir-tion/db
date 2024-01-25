@@ -19,7 +19,7 @@ class Donate extends Component
         $this->amount = $donation->amount;
         $this->user = auth()->user();
         $this->id = $donation->id;
-        $this->cardAmount = $this->user->card->amount;
+         $this->cardAmount = $this->user->card->amount ?? 0;
 
         $temp = Transaction::where('user_id', $this->user->id)->latest()->first();
         $this->status = $temp->is_successful ?? 'no data';
